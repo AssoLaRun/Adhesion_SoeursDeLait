@@ -390,14 +390,197 @@
     <span class="err-msg" id="err-sig">La signature est requise.</span>
   </div>
 
+  <!-- Droit à l'image -->
+  <div class="card">
+    <div class="card-title">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+      Cession de droits à l'image
+    </div>
+
+    <div class="droit-body">
+      <p style="font-size:.85rem; line-height:1.7; color:var(--ink); margin-bottom:1rem;">
+        Je soussigné·e autorise l'association <em>Sœurs de Lait</em> à capter, reproduire, adapter, représenter et diffuser mon image (ou celle de mon enfant mineur) dans le cadre des activités mentionnées ci-dessus. Cette autorisation couvre la prise de vue (photographie, enregistrement vidéo ou audiovisuel) réalisée par les membres de l'association ou par des personnes mandatées par elle, ainsi que la reproduction, diffusion et exploitation, directe ou par l'intermédiaire de tiers, à titre non exclusif et pour le monde entier, de ces images sur tout support connu ou à venir, notamment : supports imprimés (affiches, flyers, brochures, journaux, dossiers de presse, programmes, etc.), supports numériques (site Internet, réseaux sociaux, newsletters, vidéos en ligne, plateformes de diffusion, archives numériques, etc.), supports audiovisuels et médias (reportages, documentaires, émissions, présentations institutionnelles, etc.).
+      </p>
+      <p style="font-size:.85rem; line-height:1.7; color:var(--ink); margin-bottom:1rem;">
+        L'association s'interdit expressément toute utilisation des images susceptible de porter atteinte à la vie privée, à la dignité ou à la réputation de la personne représentée, ainsi que toute utilisation à des fins commerciales ou publicitaires sans accord écrit préalable.
+      </p>
+      <p style="font-size:.85rem; line-height:1.7; color:var(--ink); margin-bottom:1rem;">
+        Cette autorisation est consentie à titre gracieux (sans contrepartie financière), pour une durée de trois (3) ans à compter de la date de signature, et sans exclusivité.
+      </p>
+      <p style="font-size:.85rem; line-height:1.7; color:var(--ink); margin-bottom:1.25rem;">
+        Je reconnais ne pas être lié·e par un contrat exclusif relatif à l'usage de mon image ou de mon nom pouvant faire obstacle à la présente autorisation. Conformément au RGPD, je dispose à tout moment d'un droit de retrait en adressant une demande écrite à <a href="mailto:soeursdelait@gmail.com" style="color:var(--salmon);">soeursdelait@gmail.com</a>.
+      </p>
+    </div>
+
+    <div class="field-row">
+      <div class="field">
+        <label>Date de naissance <span class="req">*</span></label>
+        <input type="text" id="f-ddn" placeholder="JJ/MM/AAAA">
+        <span class="err-msg" id="err-ddn">Ce champ est requis.</span>
+      </div>
+    </div>
+
+    <div class="field-row">
+      <div class="field">
+        <label>Adresse de domicile <span class="req">*</span></label>
+        <input type="text" id="f-adresse" placeholder="12 rue des Fleurs, 97400 Saint-Denis">
+        <span class="err-msg" id="err-adresse">Ce champ est requis.</span>
+      </div>
+    </div>
+
+    <label style="margin-bottom:.45rem; display:block; margin-top:.75rem;">
+      Signature <span class="req">*</span>
+      <span style="font-size:.7rem; color:var(--muted); font-weight:400; text-transform:none; letter-spacing:0;"> — du/de la participant·e</span>
+    </label>
+    <div class="sig-wrapper">
+      <div class="sig-label-inside" id="sig2-placeholder">
+        Dessinez votre signature ici<br>
+        <span style="font-size:.68rem;">Stylet, souris ou doigt</span>
+      </div>
+      <canvas id="sig2-canvas"></canvas>
+    </div>
+    <div class="sig-actions">
+      <button class="btn-clear" id="btn-clear-sig2" type="button">Effacer</button>
+    </div>
+    <span class="err-msg" id="err-sig2">La signature est requise.</span>
+  </div>
+
+  <!-- Autorisation parentale (optionnelle) -->
+  <div class="card" id="card-parentale">
+    <div class="card-title">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+      Autorisation parentale
+      <span style="margin-left:auto; font-family:'Inter',sans-serif; font-size:.7rem; font-weight:400; color:var(--muted); text-transform:none; letter-spacing:0;">Optionnelle — uniquement pour les mineurs</span>
+    </div>
+
+    <!-- Toggle -->
+    <div class="check-item" id="chk-parentale" style="margin-bottom:1.25rem;">
+      <span class="check-box"></span>
+      <span class="check-text">L'adhérent(e) est mineur(e) — je complète l'autorisation parentale</span>
+    </div>
+
+    <div id="parentale-fields" style="display:none;">
+
+      <p style="font-size:.8rem; font-weight:600; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); margin-bottom:.9rem;">Représentant légal</p>
+
+      <div class="field-row two">
+        <div class="field">
+          <label>Nom <span class="req">*</span></label>
+          <input type="text" id="p-nom" placeholder="Dupont">
+        </div>
+        <div class="field">
+          <label>Prénom <span class="req">*</span></label>
+          <input type="text" id="p-prenom" placeholder="Marie">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Adresse <span class="req">*</span></label>
+          <input type="text" id="p-adresse" placeholder="12 rue des Fleurs">
+        </div>
+      </div>
+      <div class="field-row two">
+        <div class="field">
+          <label>Code postal et ville <span class="req">*</span></label>
+          <input type="text" id="p-ville" placeholder="97400 Saint-Denis">
+        </div>
+        <div class="field">
+          <label>Pays</label>
+          <input type="text" id="p-pays" placeholder="France">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Téléphone <span class="req">*</span></label>
+          <input type="tel" id="p-tel" placeholder="+262 692 00 00 00">
+        </div>
+      </div>
+
+      <p style="font-size:.8rem; font-weight:600; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); margin:1.1rem 0 .9rem;">Enfant mineur</p>
+
+      <div class="field-row two">
+        <div class="field">
+          <label>Lien de parenté <span class="req">*</span></label>
+          <input type="text" id="p-lien" placeholder="Mère / Père / Tuteur">
+        </div>
+        <div class="field">
+          <label>Nom de l'enfant <span class="req">*</span></label>
+          <input type="text" id="p-enfant-nom" placeholder="Dupont">
+        </div>
+      </div>
+      <div class="field-row two">
+        <div class="field">
+          <label>Prénom de l'enfant <span class="req">*</span></label>
+          <input type="text" id="p-enfant-prenom" placeholder="Léa">
+        </div>
+        <div class="field">
+          <label>Date de naissance <span class="req">*</span></label>
+          <input type="text" id="p-enfant-ddn" placeholder="JJ/MM/AAAA">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Lieu de naissance</label>
+          <input type="text" id="p-enfant-lieu-naiss" placeholder="Saint-Denis">
+        </div>
+      </div>
+
+      <p style="font-size:.8rem; font-weight:600; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); margin:1.1rem 0 .9rem;">Personne à prévenir en cas d'urgence</p>
+
+      <div class="field-row two">
+        <div class="field">
+          <label>Nom <span class="req">*</span></label>
+          <input type="text" id="p-urg-nom" placeholder="Martin">
+        </div>
+        <div class="field">
+          <label>Prénom <span class="req">*</span></label>
+          <input type="text" id="p-urg-prenom" placeholder="Paul">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Adresse</label>
+          <input type="text" id="p-urg-adresse" placeholder="5 allée des Manguiers">
+        </div>
+      </div>
+      <div class="field-row two">
+        <div class="field">
+          <label>Code postal et ville</label>
+          <input type="text" id="p-urg-ville" placeholder="97440 Sainte-André">
+        </div>
+        <div class="field">
+          <label>Téléphone <span class="req">*</span></label>
+          <input type="tel" id="p-urg-tel" placeholder="+262 692 00 00 00">
+        </div>
+      </div>
+
+      <label style="margin-bottom:.45rem; display:block; margin-top:.75rem;">
+        Signature du responsable légal <span class="req">*</span>
+        <span style="font-size:.7rem; color:var(--muted); font-weight:400; text-transform:none; letter-spacing:0;"> — précédée de « Lu et approuvé »</span>
+      </label>
+      <div class="sig-wrapper">
+        <div class="sig-label-inside" id="sig3-placeholder">
+          Dessinez votre signature ici<br>
+          <span style="font-size:.68rem;">Stylet, souris ou doigt</span>
+        </div>
+        <canvas id="sig3-canvas"></canvas>
+      </div>
+      <div class="sig-actions">
+        <button class="btn-clear" id="btn-clear-sig3" type="button">Effacer</button>
+      </div>
+      <span class="err-msg" id="err-sig3">La signature est requise.</span>
+
+    </div><!-- /parentale-fields -->
+  </div>
+
   <div class="submit-zone">
     <button class="btn-submit" id="btn-submit" type="button">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 15V3"/><path d="M7 10l5 5 5-5"/><rect x="3" y="17" width="18" height="4" rx="2"/></svg>
-      Télécharger mon formulaire signé (PDF)
+      Télécharger les documents signés (PDF)
     </button>
     <p class="submit-note">
-      Aucune donnée n'est envoyée automatiquement.<br>
-      Le PDF généré ainsi que l'ensemble des documents pertinents à l'adhésion est à transmettre via <a href="https://www.helloasso.com/associations/soeurs-de-lait" target="_blank">HelloAsso</a>.
+      Les PDF sont générés localement dans votre navigateur — aucune donnée n'est envoyée automatiquement.<br>
+      L'ensemble des documents est à transmettre via <a href="https://www.helloasso.com/associations/soeurs-de-lait" target="_blank">HelloAsso</a>.
     </p>
   </div>
 
@@ -420,13 +603,21 @@ document.querySelectorAll('.radio-option').forEach(opt => {
 });
 
 // Checkboxes
-const checkState = { statuts: false, exact: false, rgpd: false };
+const checkState = { statuts: false, exact: false, rgpd: false, parentale: false };
 [['chk-statuts','statuts'],['chk-exact','exact'],['chk-rgpd','rgpd']].forEach(([id, key]) => {
   const el = document.getElementById(id);
   el.addEventListener('click', () => {
     checkState[key] = !checkState[key];
     el.classList.toggle('checked', checkState[key]);
   });
+});
+
+// Toggle autorisation parentale
+document.getElementById('chk-parentale').addEventListener('click', () => {
+  checkState.parentale = !checkState.parentale;
+  document.getElementById('chk-parentale').classList.toggle('checked', checkState.parentale);
+  document.getElementById('parentale-fields').style.display = checkState.parentale ? 'block' : 'none';
+  if (checkState.parentale) setTimeout(resizeCanvas3, 50);
 });
 
 const canvas = document.getElementById('sig-canvas');
@@ -449,6 +640,52 @@ resizeCanvas();
 document.getElementById('btn-clear-sig').addEventListener('click', () => {
   sigPad.clear();
   placeholder.style.opacity = '1';
+});
+
+// Second signature pad (droit à l'image)
+const canvas2 = document.getElementById('sig2-canvas');
+const placeholder2 = document.getElementById('sig2-placeholder');
+
+function resizeCanvas2() {
+  const ratio = Math.max(window.devicePixelRatio || 1, 1);
+  const rect = canvas2.getBoundingClientRect();
+  canvas2.width = rect.width * ratio;
+  canvas2.height = rect.height * ratio;
+  canvas2.getContext('2d').scale(ratio, ratio);
+  sigPad2.clear();
+}
+
+const sigPad2 = new SignaturePad(canvas2, { penColor: '#2E1F18', minWidth: 1.2, maxWidth: 2.8 });
+sigPad2.addEventListener('beginStroke', () => { placeholder2.style.opacity = '0'; });
+window.addEventListener('resize', resizeCanvas2);
+resizeCanvas2();
+
+document.getElementById('btn-clear-sig2').addEventListener('click', () => {
+  sigPad2.clear();
+  placeholder2.style.opacity = '1';
+});
+
+// Third signature pad (autorisation parentale)
+const canvas3 = document.getElementById('sig3-canvas');
+const placeholder3 = document.getElementById('sig3-placeholder');
+
+function resizeCanvas3() {
+  const ratio = Math.max(window.devicePixelRatio || 1, 1);
+  const rect = canvas3.getBoundingClientRect();
+  if (!rect.width) return;
+  canvas3.width = rect.width * ratio;
+  canvas3.height = rect.height * ratio;
+  canvas3.getContext('2d').scale(ratio, ratio);
+  sigPad3.clear();
+}
+
+const sigPad3 = new SignaturePad(canvas3, { penColor: '#2E1F18', minWidth: 1.2, maxWidth: 2.8 });
+sigPad3.addEventListener('beginStroke', () => { placeholder3.style.opacity = '0'; });
+window.addEventListener('resize', resizeCanvas3);
+
+document.getElementById('btn-clear-sig3').addEventListener('click', () => {
+  sigPad3.clear();
+  placeholder3.style.opacity = '1';
 });
 
 const dateField = document.getElementById('f-date');
@@ -492,6 +729,30 @@ function validate() {
   showErr('err-rgpd', !rg); if (!rg) ok = false;
   const sigOk = !sigPad.isEmpty();
   showErr('err-sig', !sigOk); if (!sigOk) ok = false;
+
+  const ddn = document.getElementById('f-ddn').value.trim();
+  const ddnOk = ddn.length > 0;
+  document.getElementById('f-ddn').classList.toggle('error', !ddnOk);
+  showErr('err-ddn', !ddnOk); if (!ddnOk) ok = false;
+
+  const adresse = document.getElementById('f-adresse').value.trim();
+  const adresseOk = adresse.length > 0;
+  document.getElementById('f-adresse').classList.toggle('error', !adresseOk);
+  showErr('err-adresse', !adresseOk); if (!adresseOk) ok = false;
+
+  const sig2Ok = !sigPad2.isEmpty();
+  showErr('err-sig2', !sig2Ok); if (!sig2Ok) ok = false;
+
+  if (checkState.parentale) {
+    ['p-nom','p-prenom','p-adresse','p-ville','p-tel','p-lien','p-enfant-nom','p-enfant-prenom','p-enfant-ddn','p-urg-nom','p-urg-prenom','p-urg-tel'].forEach(fid => {
+      const val = document.getElementById(fid).value.trim();
+      document.getElementById(fid).classList.toggle('error', !val);
+      if (!val) ok = false;
+    });
+    const sig3Ok = !sigPad3.isEmpty();
+    showErr('err-sig3', !sig3Ok); if (!sig3Ok) ok = false;
+  }
+
   return ok;
 }
 
@@ -504,15 +765,21 @@ document.getElementById('btn-submit').addEventListener('click', () => {
   btn.disabled = true;
   btn.textContent = 'Génération en cours…';
   setTimeout(() => {
-    generatePDF();
-    btn.disabled = false;
-    btn.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 15V3"/><path d="M7 10l5 5 5-5"/><rect x="3" y="17" width="18" height="4" rx="2"/></svg> Télécharger mon formulaire signé (PDF)';
-    document.getElementById('success-banner').style.display = 'block';
-    window.scrollTo({ top:0, behavior:'smooth' });
+    generateAdhesionPDF();
+    setTimeout(() => {
+      generateDroitImagePDF();
+      if (checkState.parentale) {
+        setTimeout(() => generateParentalePDF(), 600);
+      }
+      btn.disabled = false;
+      btn.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 15V3"/><path d="M7 10l5 5 5-5"/><rect x="3" y="17" width="18" height="4" rx="2"/></svg> Télécharger les documents signés (PDF)';
+      document.getElementById('success-banner').style.display = 'block';
+      window.scrollTo({ top:0, behavior:'smooth' });
+    }, 600);
   }, 100);
 });
 
-function generatePDF() {
+function generateAdhesionPDF() {
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF({ unit: 'mm', format: 'a4' });
   const W = 210, ml = 18, mr = 18, cw = W - ml - mr;
@@ -650,6 +917,298 @@ function generatePDF() {
   const annee = new Date().getFullYear();
   const normalize = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-zA-Z0-9_]/g,'_');
   doc.save('Adhesion_' + annee + '_SoeursDeLait_' + normalize(fileNom).toUpperCase() + '_' + normalize(filePrenom) + '.pdf');
+}
+
+function generateDroitImagePDF() {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ unit: 'mm', format: 'a4' });
+  const W = 210, ml = 18, mr = 18, cw = W - ml - mr;
+  const inkR=46, inkG=31, inkB=24;
+  const salR=212, salG=133, salB=106;
+  const mR=138, mG=106, mB=96;
+
+  let y = 0;
+
+  // Header
+  doc.setFillColor(255,255,255);
+  doc.rect(0, 0, W, 50, 'F');
+  doc.setDrawColor(242,196,179);
+  doc.setLineWidth(0.5);
+  doc.line(0, 50, W, 50);
+
+  try {
+    const logoData = document.querySelector('.logo-img').src.split(',')[1];
+    doc.addImage('data:image/png;base64,' + logoData, 'PNG', W/2 - 18, 4, 36, 32);
+  } catch(e) {}
+
+  doc.setTextColor(salR, salG, salB);
+  doc.setFontSize(7.5); doc.setFont('helvetica','normal');
+  doc.text('ASSOCIATION LOI 1901', W/2, 40, { align:'center' });
+
+  doc.setTextColor(inkR, inkG, inkB);
+  doc.setFontSize(15); doc.setFont('helvetica','bold');
+  doc.text("Cession de droits à l'image", W/2, 47, { align:'center' });
+
+  y = 58;
+
+  // Identité
+  const civilite = civiliteValue;
+  const nom = document.getElementById('f-nom').value.trim();
+  const ddn = document.getElementById('f-ddn').value.trim();
+  const adresse = document.getElementById('f-adresse').value.trim();
+  const lieu = document.getElementById('f-lieu').value.trim();
+  const date = document.getElementById('f-date').value.trim();
+
+  // Intro
+  doc.setFillColor(salR, salG, salB);
+  doc.roundedRect(ml, y, cw, 7.5, 2, 2, 'F');
+  doc.setTextColor(255,255,255);
+  doc.setFontSize(9.5); doc.setFont('helvetica','bold');
+  doc.text('Identité du signataire', ml + 4, y + 5.2);
+  y += 12;
+
+  function field2(label, value, x, w) {
+    doc.setFontSize(7); doc.setFont('helvetica','normal');
+    doc.setTextColor(mR, mG, mB);
+    doc.text(label.toUpperCase(), x, y);
+    doc.setFontSize(9.5); doc.setFont('helvetica','normal');
+    doc.setTextColor(inkR, inkG, inkB);
+    doc.text(value || '–', x, y + 5.5);
+    doc.setDrawColor(232,206,197);
+    doc.setLineWidth(0.3);
+    doc.line(x, y + 7.5, x + w, y + 7.5);
+  }
+
+  field2('Civilité', civilite, ml, 40);
+  field2('Nom et prénom', nom, ml + 45, cw - 45);
+  y += 14;
+  field2('Né(e) le', ddn, ml, cw * 0.45 - 4);
+  field2('Domicilié(e) au', adresse, ml + cw * 0.48, cw * 0.52);
+  y += 16;
+
+  // Corps du texte
+  doc.setFillColor(salR, salG, salB);
+  doc.roundedRect(ml, y, cw, 7.5, 2, 2, 'F');
+  doc.setTextColor(255,255,255);
+  doc.setFontSize(9.5); doc.setFont('helvetica','bold');
+  doc.text('Autorisation', ml + 4, y + 5.2);
+  y += 12;
+
+  const paragraphs = [
+    "Je soussigné·e autorise l'association Sœurs de Lait à capter, reproduire, adapter, représenter et diffuser mon image (ou celle de mon enfant mineur) dans le cadre des activités mentionnées ci-dessus. Cette autorisation couvre la prise de vue (photographie, enregistrement vidéo ou audiovisuel) réalisée par les membres de l'association ou par des personnes mandatées par elle, ainsi que la reproduction, diffusion et exploitation, directe ou par l'intermédiaire de tiers, à titre non exclusif et pour le monde entier, de ces images sur tout support connu ou à venir, notamment : supports imprimés (affiches, flyers, brochures, journaux, dossiers de presse, programmes, etc.), supports numériques (site Internet, réseaux sociaux, newsletters, vidéos en ligne, plateformes de diffusion, archives numériques, etc.), supports audiovisuels et médias (reportages, documentaires, émissions, présentations institutionnelles, etc.).",
+    "L'association s'interdit expressément toute utilisation des images susceptible de porter atteinte à la vie privée, à la dignité ou à la réputation de la personne représentée, ainsi que toute utilisation à des fins commerciales ou publicitaires sans accord écrit préalable.",
+    "Cette autorisation est consentie à titre gracieux (sans contrepartie financière), pour une durée de trois (3) ans à compter de la date de signature, et sans exclusivité.",
+    "Je reconnais ne pas être lié·e par un contrat exclusif relatif à l'usage de mon image ou de mon nom pouvant faire obstacle à la présente autorisation. Conformément au RGPD, je dispose à tout moment d'un droit de retrait en adressant une demande écrite à soeursdelait@gmail.com."
+  ];
+
+  doc.setTextColor(inkR, inkG, inkB);
+  doc.setFontSize(8.8); doc.setFont('helvetica','normal');
+  paragraphs.forEach(para => {
+    const lines = doc.splitTextToSize(para, cw);
+    doc.text(lines, ml, y);
+    y += lines.length * 5 + 4;
+  });
+
+  y += 4;
+
+  // Lieu et date
+  doc.setFontSize(7); doc.setFont('helvetica','normal');
+  doc.setTextColor(mR, mG, mB);
+  doc.text('FAIT À', ml, y);
+  doc.setFontSize(9.5); doc.setTextColor(inkR, inkG, inkB);
+  doc.text(lieu || '–', ml, y + 5.5);
+  doc.setDrawColor(232,206,197); doc.setLineWidth(0.3);
+  doc.line(ml, y + 7.5, ml + cw * 0.48 - 4, y + 7.5);
+
+  doc.setFontSize(7); doc.setFont('helvetica','normal');
+  doc.setTextColor(mR, mG, mB);
+  doc.text('LE', ml + cw * 0.52, y);
+  doc.setFontSize(9.5); doc.setTextColor(inkR, inkG, inkB);
+  doc.text(date || '–', ml + cw * 0.52, y + 5.5);
+  doc.line(ml + cw * 0.52, y + 7.5, W - mr, y + 7.5);
+
+  y += 16;
+
+  // Signature
+  doc.setFontSize(7.5); doc.setFont('helvetica','italic');
+  doc.setTextColor(mR, mG, mB);
+  doc.text('Signature du / de la participant·e', ml, y);
+  y += 3.5;
+
+  const sigData2 = sigPad2.toDataURL('image/png');
+  const sigH = 33;
+  doc.setDrawColor(232,206,197);
+  doc.setLineWidth(0.4);
+  doc.roundedRect(ml, y, cw, sigH, 3, 3, 'D');
+  doc.addImage(sigData2, 'PNG', ml + 2, y + 2, cw - 4, sigH - 4);
+  y += sigH + 8;
+
+  // Footer
+  doc.setDrawColor(232,206,197);
+  doc.setLineWidth(0.3);
+  doc.line(ml, 282, W - mr, 282);
+  doc.setFontSize(6.8); doc.setFont('helvetica','normal');
+  doc.setTextColor(mR, mG, mB);
+  doc.text('ASSOCIATION SŒURS DE LAIT · 326 Chemin Grand Canal · 97440 Sainte-André · soeursdelait@gmail.com', W/2, 286, { align:'center' });
+
+  const fullName2 = nom || 'Inconnu';
+  const parts2 = fullName2.split(/\s+/);
+  const fp2 = parts2[0] || '';
+  const fn2 = parts2.slice(1).join('_') || fp2;
+  const annee2 = new Date().getFullYear();
+  const norm2 = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-zA-Z0-9_]/g,'_');
+  doc.save('DroitImage_' + annee2 + '_SoeursDeLait_' + norm2(fn2).toUpperCase() + '_' + norm2(fp2) + '.pdf');
+}
+
+function generateParentalePDF() {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ unit: 'mm', format: 'a4' });
+  const W = 210, ml = 18, mr = 18, cw = W - ml - mr;
+  const inkR=46, inkG=31, inkB=24;
+  const salR=212, salG=133, salB=106;
+  const mR=138, mG=106, mB=96;
+  let y = 0;
+
+  // Header
+  doc.setFillColor(255,255,255);
+  doc.rect(0, 0, W, 50, 'F');
+  doc.setDrawColor(242,196,179); doc.setLineWidth(0.5);
+  doc.line(0, 50, W, 50);
+  try {
+    const logoData = document.querySelector('.logo-img').src.split(',')[1];
+    doc.addImage('data:image/png;base64,' + logoData, 'PNG', W/2 - 18, 4, 36, 32);
+  } catch(e) {}
+  doc.setTextColor(salR, salG, salB);
+  doc.setFontSize(7.5); doc.setFont('helvetica','normal');
+  doc.text('ASSOCIATION LOI 1901', W/2, 40, { align:'center' });
+  doc.setTextColor(inkR, inkG, inkB);
+  doc.setFontSize(15); doc.setFont('helvetica','bold');
+  doc.text('Adhésion — Autorisation parentale', W/2, 47, { align:'center' });
+  y = 58;
+
+  function sec(title) {
+    doc.setFillColor(salR, salG, salB);
+    doc.roundedRect(ml, y, cw, 7.5, 2, 2, 'F');
+    doc.setTextColor(255,255,255);
+    doc.setFontSize(9.5); doc.setFont('helvetica','bold');
+    doc.text(title, ml + 4, y + 5.2);
+    y += 12;
+  }
+
+  function f(label, value, x, w) {
+    doc.setFontSize(7); doc.setFont('helvetica','normal'); doc.setTextColor(mR,mG,mB);
+    doc.text(label.toUpperCase(), x, y);
+    doc.setFontSize(9.5); doc.setFont('helvetica','normal'); doc.setTextColor(inkR,inkG,inkB);
+    doc.text(value||'–', x, y+5.5);
+    doc.setDrawColor(232,206,197); doc.setLineWidth(0.3);
+    doc.line(x, y+7.5, x+w, y+7.5);
+  }
+
+  // Représentant légal
+  sec('Je soussigné(e) — Représentant légal');
+  const pNom = document.getElementById('p-nom').value.trim();
+  const pPrenom = document.getElementById('p-prenom').value.trim();
+  const pAdresse = document.getElementById('p-adresse').value.trim();
+  const pVille = document.getElementById('p-ville').value.trim();
+  const pPays = document.getElementById('p-pays').value.trim();
+  const pTel = document.getElementById('p-tel').value.trim();
+
+  f('Nom', pNom, ml, cw*0.48-4);
+  f('Prénom', pPrenom, ml+cw*0.52, cw*0.48);
+  y += 14;
+  f('Adresse', pAdresse, ml, cw);
+  y += 14;
+  f('Code postal et ville', pVille, ml, cw*0.55-4);
+  f('Pays', pPays||'France', ml+cw*0.58, cw*0.42);
+  y += 14;
+  f('Téléphone', pTel, ml, cw);
+  y += 16;
+
+  // Enfant mineur
+  sec('En tant que représentant légal de');
+  const pLien = document.getElementById('p-lien').value.trim();
+  const pEnom = document.getElementById('p-enfant-nom').value.trim();
+  const pEprenom = document.getElementById('p-enfant-prenom').value.trim();
+  const pEddn = document.getElementById('p-enfant-ddn').value.trim();
+  const pElieuNaiss = document.getElementById('p-enfant-lieu-naiss').value.trim();
+
+  f('Lien de parenté', pLien, ml, cw*0.45-4);
+  f('Nom', pEnom, ml+cw*0.48, cw*0.52);
+  y += 14;
+  f('Prénom', pEprenom, ml, cw*0.45-4);
+  f('Date de naissance', pEddn, ml+cw*0.48, cw*0.52);
+  y += 14;
+  f('Lieu de naissance', pElieuNaiss||'–', ml, cw);
+  y += 16;
+
+  // Autorisations
+  sec('Autorisations accordées');
+  doc.setFontSize(8.8); doc.setFont('helvetica','normal'); doc.setTextColor(inkR,inkG,inkB);
+  const authLines1 = doc.splitTextToSize("L'autorise à être adhérent(e) de l'association Sœurs de Lait.", cw - 8);
+  const authLines2 = doc.splitTextToSize("Autorise l'association Sœurs de Lait à utiliser son image tel qu'explicité dans le formulaire de cession de droits à l'image.", cw - 8);
+
+  [authLines1, authLines2].forEach(lines => {
+    doc.setFillColor(salR, salG, salB);
+    doc.roundedRect(ml, y-3.5, 4.5, 4.5, 1, 1, 'FD');
+    doc.setDrawColor(255,255,255); doc.setLineWidth(0.9);
+    doc.line(ml+1, y-0.8, ml+2.1, y+0.5);
+    doc.line(ml+2.1, y+0.5, ml+4, y-2.2);
+    doc.setTextColor(inkR,inkG,inkB); doc.setFont('helvetica','normal');
+    doc.text(lines, ml+7.5, y);
+    y += lines.length * 5 + 4;
+  });
+  y += 4;
+
+  // Urgence
+  sec('Personne à prévenir en cas d\'urgence');
+  const pUnom = document.getElementById('p-urg-nom').value.trim();
+  const pUprenom = document.getElementById('p-urg-prenom').value.trim();
+  const pUadresse = document.getElementById('p-urg-adresse').value.trim();
+  const pUville = document.getElementById('p-urg-ville').value.trim();
+  const pUtel = document.getElementById('p-urg-tel').value.trim();
+
+  f('Nom', pUnom, ml, cw*0.48-4);
+  f('Prénom', pUprenom, ml+cw*0.52, cw*0.48);
+  y += 14;
+  f('Adresse', pUadresse||'–', ml, cw);
+  y += 14;
+  f('Code postal et ville', pUville||'–', ml, cw*0.55-4);
+  f('Téléphone', pUtel, ml+cw*0.58, cw*0.42);
+  y += 16;
+
+  // Engagements
+  doc.setFontSize(7.5); doc.setFont('helvetica','italic'); doc.setTextColor(mR,mG,mB);
+  const engText = "Je certifie que les renseignements fournis sont exacts. J'accepte que mes données soient utilisées par Sœurs de Lait conformément au RGPD. Contact : soeursdelait@gmail.com";
+  const engLines = doc.splitTextToSize(engText, cw);
+  doc.text(engLines, ml, y);
+  y += engLines.length * 4.5 + 6;
+
+  // Lieu/date (pré-remplis)
+  const lieu = document.getElementById('f-lieu').value.trim();
+  const date = document.getElementById('f-date').value.trim();
+  f('Fait à', lieu, ml, cw*0.48-4);
+  f('Le', date, ml+cw*0.52, cw*0.48);
+  y += 14;
+
+  // Signature
+  doc.setFontSize(7.5); doc.setFont('helvetica','italic'); doc.setTextColor(mR,mG,mB);
+  doc.text('Signature du responsable légal — précédée de « Lu et approuvé »', ml, y);
+  y += 3.5;
+  const sigH = 30;
+  const sigData3 = sigPad3.toDataURL('image/png');
+  doc.setDrawColor(232,206,197); doc.setLineWidth(0.4);
+  doc.roundedRect(ml, y, cw, sigH, 3, 3, 'D');
+  doc.addImage(sigData3, 'PNG', ml+2, y+2, cw-4, sigH-4);
+
+  // Footer
+  doc.setDrawColor(232,206,197); doc.setLineWidth(0.3);
+  doc.line(ml, 282, W-mr, 282);
+  doc.setFontSize(6.8); doc.setFont('helvetica','normal'); doc.setTextColor(mR,mG,mB);
+  doc.text('ASSOCIATION SŒURS DE LAIT · 326 Chemin Grand Canal · 97440 Sainte-André · soeursdelait@gmail.com', W/2, 286, { align:'center' });
+
+  const normP = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-zA-Z0-9_]/g,'_');
+  const anneeP = new Date().getFullYear();
+  doc.save('AutorisationParentale_' + anneeP + '_SoeursDeLait_' + normP(pEnom).toUpperCase() + '_' + normP(pEprenom) + '.pdf');
 }
 </script>
 </body>
