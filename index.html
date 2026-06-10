@@ -198,7 +198,7 @@
     line-height: 1.6;
     transition: opacity .2s;
   }
-  canvas#sig-canvas {
+  canvas#sig-canvas, canvas#sig2-canvas, canvas#sig3-canvas {
     display: block;
     width: 100%;
     height: 155px;
@@ -287,6 +287,40 @@
   <div id="success-banner">
     <strong>✓ Votre formulaire a bien été généré !</strong>
     Transmettez le PDF ainsi que l'ensemble des documents pertinents à l'adhésion via <a href="https://www.helloasso.com/associations/soeurs-de-lait" target="_blank">HelloAsso</a>.
+  </div>
+
+  <!-- Bloc intro -->
+  <div class="card" style="background:var(--salmon-pale); border-color:var(--salmon-light);">
+    <p style="font-size:.92rem; line-height:1.75; color:var(--ink); margin-bottom:1.1rem;">
+      <strong>Sœurs de Lait</strong> est une association loi 1901 qui accompagne les femmes tout au long de leur parcours d'allaitement — conseils, ateliers, entraide et accès au matériel.
+    </p>
+    <p style="font-size:.85rem; font-weight:600; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; margin-bottom:.65rem;">Procédure d'adhésion</p>
+    <ol style="padding-left:1.25rem; font-size:.88rem; line-height:1.85; color:var(--ink); margin:0;">
+      <li><strong>Lire les statuts</strong> <span style="color:var(--muted); font-style:italic;">(lien disponible prochainement)</span></li>
+      <li><strong>Compléter ce formulaire</strong>, composé de :
+        <ul style="padding-left:1.1rem; margin-top:.3rem; list-style:disc;">
+          <li>La fiche d'adhésion</li>
+          <li>L'autorisation de cession de droits à l'image</li>
+          <li style="color:var(--muted);">L'autorisation parentale <em>(optionnelle — uniquement pour les mineurs)</em></li>
+        </ul>
+      </li>
+      <li><strong>Télécharger les documents</strong> générés, puis les déposer avec votre paiement sur <a href="https://www.helloasso.com/associations/soeurs-de-lait" target="_blank" style="color:var(--salmon); font-weight:600;">HelloAsso</a>.</li>
+    </ol>
+  </div>
+
+  <!-- Bloc don -->
+  <div style="background:var(--ink); border-radius:12px; padding:1.4rem 1.75rem; margin-bottom:1.25rem; display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap;">
+    <div>
+      <p style="font-size:.72rem; font-weight:600; letter-spacing:.15em; text-transform:uppercase; color:var(--salmon-light); margin-bottom:.3rem;">Soutenir l'association</p>
+      <p style="font-size:.95rem; font-weight:600; color:#fff; margin-bottom:.2rem;">Un don, même petit, fait toute la différence 💛</p>
+      <p style="font-size:.78rem; color:#b0989b; line-height:1.5;">Aidez Sœurs de Lait à continuer d'accompagner les mamans de La Réunion.</p>
+    </div>
+    <a href="https://www.helloasso.com/associations/soeurs-de-lait" target="_blank"
+       style="display:inline-flex; align-items:center; gap:.45rem; background:var(--salmon); color:#fff; font-family:'Inter',sans-serif; font-size:.88rem; font-weight:600; border-radius:8px; padding:.7rem 1.4rem; text-decoration:none; white-space:nowrap; box-shadow:0 4px 14px #D4856A50; flex-shrink:0; transition:background .18s;"
+       onmouseover="this.style.background='#c07460'" onmouseout="this.style.background='var(--salmon)'">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg>
+      Faire un don
+    </a>
   </div>
 
   <div class="card">
@@ -525,7 +559,12 @@
         </div>
       </div>
 
-      <p style="font-size:.8rem; font-weight:600; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); margin:1.1rem 0 .9rem;">Personne à prévenir en cas d'urgence</p>
+      <div style="display:flex; align-items:center; justify-content:space-between; margin:1.1rem 0 .9rem;">
+        <p style="font-size:.8rem; font-weight:600; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); margin:0;">Personne à prévenir en cas d'urgence</p>
+        <button type="button" id="btn-copy-urgence" style="font-size:.72rem; font-weight:500; color:var(--salmon); background:var(--salmon-pale); border:1px solid var(--salmon-light); border-radius:6px; padding:.25rem .65rem; cursor:pointer; font-family:'Inter',sans-serif; flex-shrink:0; margin-left:.75rem;">
+          Mêmes infos que le représentant légal
+        </button>
+      </div>
 
       <div class="field-row two">
         <div class="field">
@@ -617,76 +656,58 @@ document.getElementById('chk-parentale').addEventListener('click', () => {
   checkState.parentale = !checkState.parentale;
   document.getElementById('chk-parentale').classList.toggle('checked', checkState.parentale);
   document.getElementById('parentale-fields').style.display = checkState.parentale ? 'block' : 'none';
-  if (checkState.parentale) setTimeout(resizeCanvas3, 50);
 });
 
-const canvas = document.getElementById('sig-canvas');
-const placeholder = document.getElementById('sig-placeholder');
+// Copier infos représentant légal → urgence
+document.getElementById('btn-copy-urgence').addEventListener('click', (e) => {
+  e.stopPropagation();
+  document.getElementById('p-urg-nom').value    = document.getElementById('p-nom').value;
+  document.getElementById('p-urg-prenom').value = document.getElementById('p-prenom').value;
+  document.getElementById('p-urg-adresse').value= document.getElementById('p-adresse').value;
+  document.getElementById('p-urg-ville').value  = document.getElementById('p-ville').value;
+  document.getElementById('p-urg-tel').value    = document.getElementById('p-tel').value;
+});
 
-function resizeCanvas() {
-  const ratio = Math.max(window.devicePixelRatio || 1, 1);
-  const rect = canvas.getBoundingClientRect();
-  canvas.width = rect.width * ratio;
-  canvas.height = rect.height * ratio;
-  canvas.getContext('2d').scale(ratio, ratio);
-  sigPad.clear();
+// ── Signature pads ───────────────────────────────────
+function initPad(canvasId, placeholderId, clearBtnId) {
+  const canvas = document.getElementById(canvasId);
+  const placeholder = document.getElementById(placeholderId);
+  let initialized = false;
+
+  function resize() {
+    const rect = canvas.getBoundingClientRect();
+    if (!rect.width || !rect.height) return;
+    const ratio = Math.max(window.devicePixelRatio || 1, 1);
+    const data = initialized ? pad.toData() : null;
+    canvas.width  = rect.width  * ratio;
+    canvas.height = rect.height * ratio;
+    canvas.getContext('2d').scale(ratio, ratio);
+    pad.clear();
+    if (data && data.length) { pad.fromData(data); placeholder.style.opacity = '0'; }
+    initialized = true;
+  }
+
+  const pad = new SignaturePad(canvas, { penColor: '#2E1F18', minWidth: 1.2, maxWidth: 2.8 });
+  pad.addEventListener('beginStroke', () => { placeholder.style.opacity = '0'; });
+
+  // Resize when element becomes visible / changes size
+  const ro = new ResizeObserver(() => resize());
+  ro.observe(canvas);
+  window.addEventListener('resize', resize);
+  resize();
+
+  if (clearBtnId) {
+    document.getElementById(clearBtnId).addEventListener('click', () => {
+      pad.clear();
+      placeholder.style.opacity = '1';
+    });
+  }
+  return pad;
 }
 
-const sigPad = new SignaturePad(canvas, { penColor: '#2E1F18', minWidth: 1.2, maxWidth: 2.8 });
-sigPad.addEventListener('beginStroke', () => { placeholder.style.opacity = '0'; });
-window.addEventListener('resize', resizeCanvas);
-resizeCanvas();
-
-document.getElementById('btn-clear-sig').addEventListener('click', () => {
-  sigPad.clear();
-  placeholder.style.opacity = '1';
-});
-
-// Second signature pad (droit à l'image)
-const canvas2 = document.getElementById('sig2-canvas');
-const placeholder2 = document.getElementById('sig2-placeholder');
-
-function resizeCanvas2() {
-  const ratio = Math.max(window.devicePixelRatio || 1, 1);
-  const rect = canvas2.getBoundingClientRect();
-  canvas2.width = rect.width * ratio;
-  canvas2.height = rect.height * ratio;
-  canvas2.getContext('2d').scale(ratio, ratio);
-  sigPad2.clear();
-}
-
-const sigPad2 = new SignaturePad(canvas2, { penColor: '#2E1F18', minWidth: 1.2, maxWidth: 2.8 });
-sigPad2.addEventListener('beginStroke', () => { placeholder2.style.opacity = '0'; });
-window.addEventListener('resize', resizeCanvas2);
-resizeCanvas2();
-
-document.getElementById('btn-clear-sig2').addEventListener('click', () => {
-  sigPad2.clear();
-  placeholder2.style.opacity = '1';
-});
-
-// Third signature pad (autorisation parentale)
-const canvas3 = document.getElementById('sig3-canvas');
-const placeholder3 = document.getElementById('sig3-placeholder');
-
-function resizeCanvas3() {
-  const ratio = Math.max(window.devicePixelRatio || 1, 1);
-  const rect = canvas3.getBoundingClientRect();
-  if (!rect.width) return;
-  canvas3.width = rect.width * ratio;
-  canvas3.height = rect.height * ratio;
-  canvas3.getContext('2d').scale(ratio, ratio);
-  sigPad3.clear();
-}
-
-const sigPad3 = new SignaturePad(canvas3, { penColor: '#2E1F18', minWidth: 1.2, maxWidth: 2.8 });
-sigPad3.addEventListener('beginStroke', () => { placeholder3.style.opacity = '0'; });
-window.addEventListener('resize', resizeCanvas3);
-
-document.getElementById('btn-clear-sig3').addEventListener('click', () => {
-  sigPad3.clear();
-  placeholder3.style.opacity = '1';
-});
+const sigPad  = initPad('sig-canvas',  'sig-placeholder',  'btn-clear-sig');
+const sigPad2 = initPad('sig2-canvas', 'sig2-placeholder', 'btn-clear-sig2');
+const sigPad3 = initPad('sig3-canvas', 'sig3-placeholder', 'btn-clear-sig3');
 
 const dateField = document.getElementById('f-date');
 if (!dateField.value) {
