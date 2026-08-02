@@ -345,7 +345,6 @@ footer a{color:var(--blue);text-decoration:none}
       </div>
       <label style="margin-bottom:.45rem;display:block;margin-top:1rem">
         Signature du responsable légal <span class="req">*</span>
-        <span style="font-size:.7rem;color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0"> — précédée de « Lu et approuvé »</span>
       </label>
       <div class="sig-wrapper">
         <div class="sig-label-inside" id="ph3">Dessinez votre signature ici<br><span style="font-size:.68rem">Stylet, souris ou doigt</span></div>
@@ -719,45 +718,49 @@ function pdfDroitImage() {
 function pdfParentale() {
   const doc=mkDoc(); const ml=18,cw=174;
   hdr(doc,'Autorisation parentale');
-  let y=54;
+  let y=59;
   y=secT(doc,y,'Je soussigné(e) — Représentant légal');
   fld(doc,y,'Nom',v('p-nom'),ml,cw*.48-4);
   fld(doc,y,'Prénom',v('p-prenom'),ml+cw*.52,cw*.48);
-  y+=15;
+  y+=11;
   fld(doc,y,'Adresse',v('p-adresse'),ml,cw);
-  y+=15;
+  y+=11;
   fld(doc,y,'Code postal et ville',v('p-ville'),ml,cw*.55-4);
   fld(doc,y,'Pays',v('p-pays')||'France',ml+cw*.58,cw*.42);
-  y+=15;
+  y+=11;
   fld(doc,y,'Téléphone',v('p-tel'),ml,cw);
-  y+=17;
+  y+=10;
   y=secT(doc,y,'En tant que représentant légal de');
   fld(doc,y,'Lien de parenté',v('p-lien'),ml,cw*.45-4);
   fld(doc,y,'Nom',v('p-enfant-nom'),ml+cw*.48,cw*.52);
-  y+=15;
+  y+=11;
   fld(doc,y,'Prénom',v('p-enfant-prenom'),ml,cw*.45-4);
   fld(doc,y,"Né·e le",v('p-enfant-ddn'),ml+cw*.48,cw*.52);
-  y+=15;
+  y+=11;
   const lieu_naiss=v('p-enfant-lieu-naiss');
-  if(lieu_naiss){ fld(doc,y,'Lieu de naissance',lieu_naiss,ml,cw); y+=15; }
-  y+=4;
+  if(lieu_naiss){ fld(doc,y,'Lieu de naissance',lieu_naiss,ml,cw); y+=11; }
+  y+=2;
   y=secT(doc,y,'Autorisations accordées');
   y=chk(doc,y,true,"Autorise l'enfant à être adhérent·e de l'association To Be or Not Subir.");
   y=chk(doc,y,true,"Autorise l'association To Be or Not Subir à utiliser l'image de l'enfant selon les termes de la cession de droits à l'image.");
-  y+=4;
+  y+=2;
   y=secT(doc,y,"Personne à prévenir en cas d'urgence");
   fld(doc,y,'Nom',v('p-urg-nom'),ml,cw*.48-4);
   fld(doc,y,'Prénom',v('p-urg-prenom'),ml+cw*.52,cw*.48);
-  y+=15;
+  y+=11;
   const ua=v('p-urg-adresse'), uv=v('p-urg-ville');
-  if(ua){ fld(doc,y,'Adresse',ua,ml,cw); y+=15; }
+  if(ua){ fld(doc,y,'Adresse',ua,ml,cw); y+=11; }
   if(uv){ fld(doc,y,'Ville',uv,ml,cw*.55-4); fld(doc,y,'Téléphone',v('p-urg-tel'),ml+cw*.58,cw*.42); }
   else   { fld(doc,y,'Téléphone',v('p-urg-tel'),ml,cw); }
-  y+=17;
+  y+=10;
   fld(doc,y,'Fait à',v('f-lieu'),ml,cw*.48-4);
   fld(doc,y,'Le',v('f-date'),ml+cw*.52,cw*.48);
-  y+=15;
-  addSig(doc,y,pad3,"Signature du responsable légal — précédée de « Lu et approuvé »");
+  y+=11;
+  // Bloc signature compact pour tenir dans la page
+  doc.setFontSize(7.5); doc.setFont('helvetica','italic'); doc.setTextColor(mutR,mutG,mutB);
+  doc.text("Signature du responsable légal",18,y); y+=3;
+  doc.setDrawColor(200,220,232); doc.setLineWidth(0.4); doc.roundedRect(18,y,174,22,3,3,'D');
+  if (pad3 && !pad3.isEmpty()) doc.addImage(pad3.toDataURL('image/png'),'PNG',20,y+2,170,18);
   ftr(doc);
   const _en=nrm(v('p-enfant-nom')).toUpperCase(), _ep=nrm(v('p-enfant-prenom')), _yp=new Date().getFullYear();
   return {doc, name:'AutorisationParentale_'+_yp+'_TBONS_'+_en+'_'+_ep+'.pdf'};
